@@ -1,9 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
-const Dropdown = ({ title, items }: { title: string; items: { label: string; href: string }[] }) => {
+interface DropdownProps {
+  title: string;
+  items: Array<{ label: string; href: string }>;
+}
+
+const Dropdown: React.FC<DropdownProps> = ({ title, items }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -49,11 +54,18 @@ export default function Home() {
     { label: 'pod yt', href: 'https://www.youtube.com/@modernleveragepodcast' },
     { label: 'pod sptfy', href: 'https://open.spotify.com/show/2Dfs6yVIsD2A6UmvkAfkKK' },
     { label: 'pod ig', href: 'https://www.instagram.com/modernleveragepodcast' },
-    { label: 'pod tt', href: 'https://tiktok.com/modernleveragepodcast' },
+    { label: 'pod tt', href: 'https://tiktok.com/@modernleveragepodcast' },
   ];
 
   const videos = ['dahome.mp4', 'daplane.mp4', 'dapres.mp4', 'dahero.mp4'];
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((error: Error) => console.log('Autoplay was prevented:', error.message));
+    }
+  }, [currentVideoIndex]);
 
   const changeBackgroundVideo = () => {
     setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
@@ -62,10 +74,12 @@ export default function Home() {
   return (
     <main className="relative min-h-screen">
       <video
+        ref={videoRef}
         key={videos[currentVideoIndex]}
         autoPlay
         loop
         muted
+        playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
         <source src={`/${videos[currentVideoIndex]}`} type="video/mp4" />
@@ -78,23 +92,20 @@ export default function Home() {
             doran<sup className="text-2xl">alytics</sup>
           </h1>
           <div className="space-y-6">
-          <div className="space-y-1">
-
-            <p className="text-xs text-white">Founded:</p>
-            <Link 
-              href="https://www.contentsquared.ai" 
-              className="inline-block font-semibold text-white bg-white bg-opacity-20 px-3 py-1 rounded transition-all duration-300 hover:bg-opacity-30 hover:text-gray-100"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              [content]<sup>squared</sup>
-            </Link>
-          </div>
+            <div className="space-y-1">
+              <p className="text-xs text-white">Founded:</p>
+              <Link 
+                href="https://www.contentsquared.ai" 
+                className="inline-block font-semibold text-white bg-white bg-opacity-20 px-3 py-1 rounded transition-all duration-300 hover:bg-opacity-30 hover:text-gray-100"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                [content]<sup>squared</sup>
+              </Link>
+            </div>
             <Link 
               href="/consulting" 
               className="block text-white hover:text-gray-300"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               consulting
             </Link>
