@@ -96,7 +96,7 @@ export default function Home() {
               <p className="text-xs text-white">Founded:</p>
               <Link 
                 href="https://www.contentsquared.ai" 
-                className="inline-block font-semibold text-white bg-white bg-opacity-20 px-3 py-1 rounded transition-all duration-300 hover:bg-opacity-30 hover:text-gray-100"
+                className="inline-block font-semibold text-white text-xl bg-white bg-opacity-20 px-3 py-1 rounded transition-all duration-300 hover:bg-opacity-30 hover:text-gray-100"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -122,7 +122,7 @@ export default function Home() {
           <Dropdown title="modern leverage pod" items={podcast} />
           <button 
             onClick={changeBackgroundVideo}
-            className="bg-white text-black py-2 px-4 rounded hover:bg-slate-300 transition-colors"
+            className="text-white bg-white bg-opacity-20 px-4 py-2 rounded transition-all duration-300 hover:bg-opacity-30 hover:text-gray-100"
           >
             change video
           </button>
