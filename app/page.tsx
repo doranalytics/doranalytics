@@ -88,7 +88,7 @@ export default function Home() {
 
       <div className="relative z-10 flex min-h-screen">
         <div className="bg-black bg-opacity-50 p-8 flex flex-col justify-center space-y-6">
-          <h1 className="text-4xl italic text-white">
+          <h1 className="text-4xl italic font-semibold tracking-wide text-white">
             doran<sup className="text-2xl">alytics</sup>
           </h1>
           <div className="space-y-6">
@@ -96,7 +96,7 @@ export default function Home() {
               <p className="text-xs text-white">Founded:</p>
               <Link 
                 href="https://www.contentsquared.ai" 
-                className="inline-block font-semibold text-white text-xl bg-white bg-opacity-20 px-3 py-1 rounded transition-all duration-300 hover:bg-opacity-30 hover:text-gray-100"
+                className="inline-block font-semibold text-white text-lg bg-slate-400 bg-opacity-20 px-3 py-1 rounded transition-all duration-300 hover:bg-opacity-30 hover:text-gray-100"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -115,14 +115,14 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              substack
+              articles
             </Link>
           </div>
           <Dropdown title="socials" items={socials} />
           <Dropdown title="modern leverage pod" items={podcast} />
           <button 
             onClick={changeBackgroundVideo}
-            className="text-white bg-white bg-opacity-20 px-4 py-2 rounded transition-all duration-300 hover:bg-opacity-30 hover:text-gray-100"
+            className="text-white text-xs w-32 bg-slate-400 bg-opacity-10 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-opacity-30 hover:text-gray-100"
           >
             change video
           </button>

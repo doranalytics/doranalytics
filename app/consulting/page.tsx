@@ -42,16 +42,19 @@ export default function Consulting() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-slate-800 text-white">
       <div className="container mx-auto px-6 py-16">
-        <header className="mb-16 text-center">
-          <Link href="/" className="text-5xl italic font-bold mb-4 inline-block">
-            doran<sup className="text-3xl">alytics</sup>
-          </Link>
+        <header className="mb-8 text-center">
+        <div className="fixed top-0 left-0 p-4">
+  <Link href="/" className="text-lg italic tracking-wide font-semibold mb-4 inline-block">
+    doran<sup className="text-xs">alytics</sup>
+  </Link>
+</div>
+
           <h1 className="text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">Your Chief Solutions Officer</h1>
           <p className="text-2xl text-slate-300">Empowering businesses with data-driven insights and innovative strategies</p>
         </header>
 
         <section className="mb-16">
-          <h2 className="text-4xl font-bold mb-8 text-center">Our Specializations</h2>
+          <h2 className="text-4xl font-bold mb-8 text-center">Specializations</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <ServiceCard key={index} title={service.title} description={service.description} icon={service.icon} />
@@ -60,10 +63,12 @@ export default function Consulting() {
         </section>
 
         <section className="mb-16">
-          <h2 className="text-4xl font-bold mb-8 text-center">Rapid Prototyping Showcase</h2>
+          <h2 className="text-4xl font-bold mb-2 text-center">I built this entire site in 2 hours..</h2>
+          <p className="text-sm text-center mb-8 text-slate-300">
+(Imagine what we can do for you)          </p>
           <div className="bg-slate-800 bg-opacity-50 p-8 rounded-lg shadow-lg">
             <p className="mb-6 text-slate-300">
-              This website was created in just 4 hours using a powerful tech stack:
+              If anyone wants to learn to code with AI, I can show you how to use:
             </p>
             <ul className="list-none mb-6 grid grid-cols-2 gap-4">
               <li className="flex items-center"><FaReact className="text-blue-400 mr-2" /> React for frontend development</li>
@@ -71,14 +76,12 @@ export default function Consulting() {
               <li className="flex items-center"><FaVideo className="text-green-400 mr-2" /> RunwayML for video generation</li>
               <li className="flex items-center"><FaRobot className="text-purple-400 mr-2" /> Claude AI for code assistance</li>
             </ul>
-            <p className="text-slate-300">
-              I can teach you how to leverage these tools to rapidly prototype and deploy your ideas.
-            </p>
+       
           </div>
         </section>
 
         <section className="text-center">
-          <h2 className="text-4xl font-bold mb-8">Collaborate with Us</h2>
+          <h2 className="text-4xl font-bold mb-8">Hire Us For Anything</h2>
           <p className="text-2xl mb-8 text-slate-300">
             Ready to transform your business with cutting-edge analytics and strategy?
           </p>
