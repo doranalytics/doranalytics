@@ -65,33 +65,26 @@
   border-radius: 0.2em;
 }
 
-/* Make text glow stronger and ensure it applies to ALL text */
-*, *::before, *::after {
-  text-shadow: 0 0 30px #e7f96f,
-               0 0 60px #e7f96f,
-               0 0 90px #e7f96f,
-               0 0 120px #e7f96f,
-               0 0 150px #e7f96f,
-               0 0 180px #e7f96f,
-               0 0 210px #e7f96f !important;
+/* Simplified glow with fewer layers but still strong effect */
+:root * {
+  text-shadow: 0 0 40px #e7f96f,
+               0 0 80px #e7f96f,
+               0 0 120px #e7f96f !important;
 }
 
-/* Slightly reduce image glow to match text */
-img {
-  box-shadow: 0 0 20px #e7f96f,
-              0 0 40px #e7f96f,
-              0 0 60px #e7f96f !important;
-}
-
-/* Ensure NavigationMenu items also get the glow */
+/* Simplified navigation styles */
+[role="navigation"] *,
 .NavigationMenuContent *,
 .NavigationMenuTrigger,
-.NavigationMenuLink {
-  text-shadow: 0 0 30px #e7f96f,
-               0 0 60px #e7f96f,
-               0 0 90px #e7f96f,
-               0 0 120px #e7f96f,
-               0 0 150px #e7f96f,
-               0 0 180px #e7f96f,
-               0 0 210px #e7f96f !important;
+.NavigationMenuLink,
+button {
+  text-shadow: 0 0 40px #e7f96f,
+               0 0 80px #e7f96f,
+               0 0 120px #e7f96f !important;
+}
+
+/* Simplified image glow */
+img {
+  box-shadow: 0 0 30px #e7f96f,
+              0 0 60px #e7f96f !important;
 }
