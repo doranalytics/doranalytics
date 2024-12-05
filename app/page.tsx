@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -16,8 +16,6 @@ import { Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function Home() {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   const socials = [
     { label: 'ig', href: 'https://instagram.com/doranalytics' },
     { label: 'tt', href: 'https://tiktok.com/@doranalytics' },
