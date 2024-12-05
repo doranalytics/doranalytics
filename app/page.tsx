@@ -1,45 +1,19 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
-
-interface DropdownProps {
-  title: string;
-  items: Array<{ label: string; href: string }>;
-}
-
-const Dropdown: React.FC<DropdownProps> = ({ title, items }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center text-white hover:text-gray-300 focus:outline-none"
-      >
-        {title}
-        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-      {isOpen && (
-        <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
-          {items.map((item, index) => (
-            <Link 
-              key={index} 
-              href={item.href} 
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
+import Image from 'next/image';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu"
+import { useTheme } from "next-themes"
+import { Moon, Sun } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default function Home() {
   const socials = [
@@ -50,6 +24,7 @@ export default function Home() {
     { label: 'git', href: 'https://github.com/doranalytics' },
     { label: 'food ig', href: 'https://instagram.com/chateau_brian_d' },
   ];
+
   const podcast = [
     { label: 'pod yt', href: 'https://www.youtube.com/@modernleveragepodcast' },
     { label: 'pod sptfy', href: 'https://open.spotify.com/show/2Dfs6yVIsD2A6UmvkAfkKK' },
@@ -57,75 +32,89 @@ export default function Home() {
     { label: 'pod tt', href: 'https://tiktok.com/@modernleveragepodcast' },
   ];
 
-  const videos = ['dahome.mp4', 'daplane.mp4', 'dapres.mp4', 'dahero.mp4'];
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((error: Error) => console.log('Autoplay was prevented:', error.message));
-    }
-  }, [currentVideoIndex]);
-
-  const changeBackgroundVideo = () => {
-    setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
-  };
+  const { theme, setTheme } = useTheme()
 
   return (
-    <main className="relative min-h-screen">
-      <video
-        ref={videoRef}
-        key={videos[currentVideoIndex]}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-      >
-        <source src={`/${videos[currentVideoIndex]}`} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-      <div className="relative z-10 flex min-h-screen">
-        <div className="bg-black bg-opacity-50 p-8 flex flex-col justify-center space-y-6">
-          <h1 className="text-4xl italic font-semibold tracking-wide text-white">
-            doran<sup className="text-2xl">alytics</sup>
-          </h1>
-          <div className="space-y-6">
-            <div className="space-y-1">
-              <p className="text-xs text-white">Founded:</p>
-              <Link 
-                href="https://www.contentsquared.ai" 
-                className="inline-block font-semibold text-white text-lg bg-slate-400 bg-opacity-20 px-3 py-1 rounded transition-all duration-300 hover:bg-opacity-30 hover:text-gray-100"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                [content]<sup>squared</sup>
-              </Link>
-            </div>
-            <Link 
-              href="/consulting" 
-              className="block text-white hover:text-gray-300"
+    <main className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-md space-y-8">
+          <div className="flex justify-between items-center">
+            <h1 className="text-4xl font-bold tracking-tight text-foreground">
+              doranalytics
+            </h1>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
-              consulting
-            </Link>
-            <Link 
-              href="https://doranalytics.substack.com" 
-              className="block text-white hover:text-gray-300"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              articles
-            </Link>
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            </Button>
           </div>
-          <Dropdown title="socials" items={socials} />
-          <Dropdown title="modern leverage pod" items={podcast} />
-          <button 
-            onClick={changeBackgroundVideo}
-            className="text-white text-xs w-32 bg-slate-400 bg-opacity-10 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-opacity-30 hover:text-gray-100"
-          >
-            change video
-          </button>
+
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <Link href="https://www.contentsquared.ai" passHref legacyBehavior>
+                  <NavigationMenuLink className="text-primary hover:text-primary/80">
+                    [content]<sup>squared</sup>
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <Link href="/consulting" passHref legacyBehavior>
+                  <NavigationMenuLink className="text-primary hover:text-primary/80">
+                    consulting
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="text-primary">socials</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[200px] gap-3 p-4 bg-popover">
+                    {socials.map((item) => (
+                      <li key={item.label}>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href={item.href}
+                            className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {item.label}
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="text-primary">podcast</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[200px] gap-3 p-4 bg-popover">
+                    {podcast.map((item) => (
+                      <li key={item.label}>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href={item.href}
+                            className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {item.label}
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
       </div>
     </main>
