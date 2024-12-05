@@ -1,35 +1,52 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import localFont from 'next/font/local'
 import { ThemeProvider } from "next-themes"
+import './globals.css'
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-export const metadata: Metadata = {
-  title: "doranalytics",
-  description: "consulting in life",
-};
+const attilaSans = localFont({
+  src: [
+    {
+      path: '../public/fonts/AttilaSansClassic-Black.woff',
+      weight: '900',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/AttilaSansClassic-Regular.woff',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/AttilaSansSharp-Semibold.woff',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/AttilaSansSharp-Thin.woff',
+      weight: '100',
+      style: 'normal',
+    }
+  ],
+  variable: '--font-attila'
+})
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
-      <body>
+    <html lang="en" className={`${attilaSans.variable}`}>
+      <body className="antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="min-h-screen bg-background font-sans">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

@@ -38,7 +38,7 @@ export default function Home() {
         <div className="max-w-sm mx-auto space-y-8">
           <div className="flex flex-col items-center space-y-4">
             <h1 className="text-4xl font-bold tracking-tight text-foreground italic">
-              <span className="inline-block transition-all duration-300 hover:tracking-wide">
+              <span className="inline-block transition-all duration-300 hover:tracking-wide glow">
                 doran<sup>alytics</sup>
               </span>
             </h1>

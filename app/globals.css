@@ -1,10 +1,22 @@
+@font-face {
+  font-family: 'YourCustomFont';
+  src: url('/fonts/your-font-file.woff2') format('woff2'),
+       url('/fonts/your-font-file.woff') format('woff'),
+       url('/fonts/your-font-file.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Add additional @font-face declarations if you have different weights or styles */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 84 64% 80%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -30,32 +42,10 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
   }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+  
+  /* Apply the font to all text */
+  html {
+    font-family: var(--font-attila), system-ui, sans-serif;
   }
 }
 
@@ -66,4 +56,42 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.highlight {
+  background-color: #000;
+  color: #fff;
+  padding: 0.2em 0.4em;
+  border-radius: 0.2em;
+}
+
+/* Make text glow stronger and ensure it applies to ALL text */
+*, *::before, *::after {
+  text-shadow: 0 0 30px #e7f96f,
+               0 0 60px #e7f96f,
+               0 0 90px #e7f96f,
+               0 0 120px #e7f96f,
+               0 0 150px #e7f96f,
+               0 0 180px #e7f96f,
+               0 0 210px #e7f96f !important;
+}
+
+/* Slightly reduce image glow to match text */
+img {
+  box-shadow: 0 0 20px #e7f96f,
+              0 0 40px #e7f96f,
+              0 0 60px #e7f96f !important;
+}
+
+/* Ensure NavigationMenu items also get the glow */
+.NavigationMenuContent *,
+.NavigationMenuTrigger,
+.NavigationMenuLink {
+  text-shadow: 0 0 30px #e7f96f,
+               0 0 60px #e7f96f,
+               0 0 90px #e7f96f,
+               0 0 120px #e7f96f,
+               0 0 150px #e7f96f,
+               0 0 180px #e7f96f,
+               0 0 210px #e7f96f !important;
 }
