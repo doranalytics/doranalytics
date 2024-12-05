@@ -58,7 +58,7 @@ const config: Config = {
       keyframes: {
         'expand-contract': {
           '0%, 100%': { letterSpacing: 'normal' },
-          '50%': { letterSpacing: '0.5em' }
+          '50%': { letterSpacing: '1em' }
         }
       },
       animation: {

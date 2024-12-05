@@ -27,10 +27,8 @@ export default function Home() {
     { label: 'food ig', href: 'https://instagram.com/chateau_brian_d' },
   ];
 
-  const podcast = [
+  const pod = [
     { label: 'pod yt', href: 'https://www.youtube.com/@modernleveragepodcast' },
-    { label: 'pod sptfy', href: 'https://open.spotify.com/show/2Dfs6yVIsD2A6UmvkAfkKK' },
-    { label: 'pod ig', href: 'https://www.instagram.com/modernleveragepodcast' },
     { label: 'pod tt', href: 'https://tiktok.com/@modernleveragepodcast' },
   ];
 
@@ -76,7 +74,7 @@ export default function Home() {
                     <NavigationMenuTrigger className="text-primary">podcast</NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <ul className="grid w-[200px] gap-3 p-4 bg-popover">
-                        {podcast.map((item) => (
+                        {pod.map((item) => (
                           <li key={item.label}>
                             <NavigationMenuLink asChild>
                               <Link
@@ -108,7 +106,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center space-y-6">
-            <h2 className="text-sm text-primary/80">founded:</h2>
+            <h2 className="text-sm text-foreground">founded:</h2>
             <div className="flex flex-col space-y-8">
               <Link href="https://contentsquared.ai" target="_blank" rel="noopener noreferrer">
                 <Image
