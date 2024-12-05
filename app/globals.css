@@ -83,8 +83,8 @@ button {
                0 0 120px #e7f96f !important;
 }
 
-/* Simplified image glow */
+/* Adjusted image glow to match text */
 img {
-  box-shadow: 0 0 30px #e7f96f,
-              0 0 60px #e7f96f !important;
+  box-shadow: 0 0 20px #e7f96f,
+              0 0 40px #e7f96f !important;
 }
