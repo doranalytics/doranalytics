@@ -39,9 +39,56 @@ export default function Home() {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-md space-y-8">
           <div className="flex justify-between items-center">
-            <h1 className="text-4xl font-bold tracking-tight text-foreground">
-              doranalytics
+            <h1 className="text-4xl font-bold tracking-tight text-foreground italic">
+              doran<sup>alytics</sup>
             </h1>
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-primary">socials</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[200px] gap-3 p-4 bg-popover">
+                      {socials.map((item) => (
+                        <li key={item.label}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={item.href}
+                              className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {item.label}
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-primary">podcast</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[200px] gap-3 p-4 bg-popover">
+                      {podcast.map((item) => (
+                        <li key={item.label}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={item.href}
+                              className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {item.label}
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
             <Button
               variant="ghost"
               size="icon"
@@ -52,69 +99,38 @@ export default function Home() {
             </Button>
           </div>
 
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link href="https://www.contentsquared.ai" passHref legacyBehavior>
-                  <NavigationMenuLink className="text-primary hover:text-primary/80">
-                    [content]<sup>squared</sup>
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <Link href="/consulting" passHref legacyBehavior>
-                  <NavigationMenuLink className="text-primary hover:text-primary/80">
-                    consulting
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-primary">socials</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[200px] gap-3 p-4 bg-popover">
-                    {socials.map((item) => (
-                      <li key={item.label}>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            href={item.href}
-                            className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {item.label}
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-primary">podcast</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[200px] gap-3 p-4 bg-popover">
-                    {podcast.map((item) => (
-                      <li key={item.label}>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            href={item.href}
-                            className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {item.label}
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+          <div className="flex flex-col items-center space-y-6">
+            <h2 className="text-xl text-primary/80">founded</h2>
+            <div className="flex flex-col space-y-8">
+              <Link href="https://contentsquared.ai" target="_blank" rel="noopener noreferrer">
+                <Image
+                  src="/c2.png"
+                  alt="Content Squared AI"
+                  width={400}
+                  height={250}
+                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-lg"
+                />
+              </Link>
+              <Link href="https://www.dealauthor.com" target="_blank" rel="noopener noreferrer">
+                <Image
+                  src="/da.png"
+                  alt="Deal Author"
+                  width={400}
+                  height={250}
+                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-lg"
+                />
+              </Link>
+              <Link href="https://www.murj.ai" target="_blank" rel="noopener noreferrer">
+                <Image
+                  src="/murj.png"
+                  alt="Murj AI"
+                  width={400}
+                  height={250}
+                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-lg"
+                />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </main>
