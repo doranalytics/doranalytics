@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -16,6 +16,8 @@ import { Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function Home() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const socials = [
     { label: 'ig', href: 'https://instagram.com/doranalytics' },
     { label: 'tt', href: 'https://tiktok.com/@doranalytics' },
@@ -37,70 +39,76 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <div className="max-w-md space-y-8">
-          <div className="flex justify-between items-center">
+        <div className="max-w-sm mx-auto space-y-8">
+          <div className="flex flex-col items-center space-y-4">
             <h1 className="text-4xl font-bold tracking-tight text-foreground italic">
-              doran<sup>alytics</sup>
+              <span className="inline-block transition-all duration-300 hover:tracking-wide">
+                doran<sup>alytics</sup>
+              </span>
             </h1>
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-primary">socials</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-3 p-4 bg-popover">
-                      {socials.map((item) => (
-                        <li key={item.label}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={item.href}
-                              className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {item.label}
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
+            
+            <div className="flex items-center space-x-4">
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-primary">socials</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[200px] gap-3 p-4 bg-popover">
+                        {socials.map((item) => (
+                          <li key={item.label}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={item.href}
+                                className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {item.label}
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
 
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-primary">podcast</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-3 p-4 bg-popover">
-                      {podcast.map((item) => (
-                        <li key={item.label}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={item.href}
-                              className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {item.label}
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            </Button>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-primary">podcast</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[200px] gap-3 p-4 bg-popover">
+                        {podcast.map((item) => (
+                          <li key={item.label}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={item.href}
+                                className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {item.label}
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+              
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              >
+                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              </Button>
+            </div>
           </div>
 
           <div className="flex flex-col items-center space-y-6">
-            <h2 className="text-xl text-primary/80">founded</h2>
+            <h2 className="text-sm text-primary/80">founded:</h2>
             <div className="flex flex-col space-y-8">
               <Link href="https://contentsquared.ai" target="_blank" rel="noopener noreferrer">
                 <Image
@@ -108,7 +116,7 @@ export default function Home() {
                   alt="Content Squared AI"
                   width={400}
                   height={250}
-                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-lg"
+                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-2xl dark:shadow-white/10"
                 />
               </Link>
               <Link href="https://www.dealauthor.com" target="_blank" rel="noopener noreferrer">
@@ -117,7 +125,7 @@ export default function Home() {
                   alt="Deal Author"
                   width={400}
                   height={250}
-                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-lg"
+                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-2xl dark:shadow-white/10"
                 />
               </Link>
               <Link href="https://www.murj.ai" target="_blank" rel="noopener noreferrer">
@@ -126,7 +134,7 @@ export default function Home() {
                   alt="Murj AI"
                   width={400}
                   height={250}
-                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-lg"
+                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-2xl dark:shadow-white/10"
                 />
               </Link>
             </div>
