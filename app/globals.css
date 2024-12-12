@@ -59,32 +59,5 @@
 }
 
 .highlight {
-  background-color: #000;
-  color: #fff;
-  padding: 0.2em 0.4em;
-  border-radius: 0.2em;
-}
 
-/* Simplified glow with fewer layers but still strong effect */
-:root * {
-  text-shadow: 0 0 40px #e7f96f,
-               0 0 80px #e7f96f,
-               0 0 120px #e7f96f !important;
-}
-
-/* Simplified navigation styles */
-[role="navigation"] *,
-.NavigationMenuContent *,
-.NavigationMenuTrigger,
-.NavigationMenuLink,
-button {
-  text-shadow: 0 0 40px #e7f96f,
-               0 0 80px #e7f96f,
-               0 0 120px #e7f96f !important;
-}
-
-/* Adjusted image glow to match text */
-img {
-  box-shadow: 0 0 20px #e7f96f,
-              0 0 40px #e7f96f !important;
 }

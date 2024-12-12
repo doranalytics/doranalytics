@@ -96,7 +96,7 @@ export default function Home() {
                   alt="Content Squared AI"
                   width={400}
                   height={250}
-                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-2xl dark:shadow-white/10"
+                  className="rounded-2xl hover:opacity-80 transition-opacity"
                 />
               </Link>
               <Link href="https://www.dealauthor.com" target="_blank" rel="noopener noreferrer">
@@ -105,7 +105,7 @@ export default function Home() {
                   alt="Deal Author"
                   width={400}
                   height={250}
-                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-2xl dark:shadow-white/10"
+                  className="rounded-2xl hover:opacity-80 transition-opacity"
                 />
               </Link>
               <Link href="https://www.murj.ai" target="_blank" rel="noopener noreferrer">
@@ -114,7 +114,7 @@ export default function Home() {
                   alt="Murj AI"
                   width={400}
                   height={250}
-                  className="rounded-2xl hover:opacity-80 transition-opacity shadow-2xl dark:shadow-white/10"
+                  className="rounded-2xl hover:opacity-80 transition-opacity"
                 />
               </Link>
             </div>
